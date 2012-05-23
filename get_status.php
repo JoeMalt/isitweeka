@@ -3,7 +3,7 @@
 //Connect to the database
 define("DB_SERVER","db414520808.db.1and1.com");
 define("DB_USERNAME","dbo414520808");
-define("DB_PASSWORD","MinstrelsCare88");
+define("DB_PASSWORD","[blanked]");
 define("DB_NAME","db414520808");
 $db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
 $year = date("Y");
