@@ -1,0 +1,49 @@
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    font-family:Georgia,"Liberation Serif","Times New Roman",Verdana; /*Georgia and Verdana are pretty common, Lib. Ser. for Ubuntu */
+}
+
+.bluecurvy
+{
+    border-radius: 15px;
+    border:5px solid gray;
+    background-color: #ddddff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#topbanner
+{
+    font-size: 2em;
+    text-align: center;
+    width: 65%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#main
+{
+    height: 25em;
+    width: 75%;
+}
+
+#main_lead
+{
+    font-size: 1.3em;
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+#main_center
+{
+    font-size: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    min-height: 10em;
+    display: table-cell;
+    vertical-align: top;
+}
