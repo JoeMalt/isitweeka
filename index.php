@@ -20,7 +20,9 @@ include 'get_status.php';
 
 <div id='main_lead'>
 <?php
-echo date('l, F j, Y');
+$day_name = date("l");
+$month_name = date("F");
+echo "$day_name, $month_name $day, $year";
 ?>
 </div>
 
@@ -33,25 +35,22 @@ echo date('l, F j, Y');
 switch($status)
 {
     case "a":
-    	echo "It's Week A";
+    echo "It's Week A";
     break;
     case "b":
-    	echo "It's Week B";
+    echo "It's Week B";
     break;
     case "wa":
-    	echo "It's the weekend, and the coming week will be Week A";
+    echo "It's the weekend, and the coming week will be Week A";
     break;
     case "wb":
-	    echo "It's the weekend, and the coming week will be Week B";
-    break;
-    case "wh":
-    	echo "It's the holidays!";
+    echo "It's the weekend, and the coming week will be Week B";
     break;
     case "h":
-    	echo "It's the holidays!";
+    echo "It's the holidays!";
     break;
     default:
-    	echo "Error";
+    echo "Error";
     break;
 }
 ?>

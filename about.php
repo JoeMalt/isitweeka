@@ -4,7 +4,7 @@
 <head><title>IsItWeekA - About</title><link rel='stylesheet' content-type='text/css' href='style.css' /></head>
 <body>
 <div id='topbanner' class='bigtext'>IsItWeekA - About</div>
-<div id='main' style='height: auto'>
+<div id='main'>
 <p><b>IsItWeekA didn't look like this before!</b><br/>
 The original IsItWeekA.com was run by Hasan Ali and the editorial team of the <a href='http://www.pupilsvoice.com'>Pupils' Voice</a>. However, in July 2011, Hasan and the rest of the original PV editors left the school, and the site ceased to be updated.</p>
 
