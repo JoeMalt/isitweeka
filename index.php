@@ -20,9 +20,7 @@ include 'get_status.php';
 
 <div id='main_lead'>
 <?php
-$day_name = date("l");
-$month_name = date("F");
-echo "$day_name, $month_name $day, $year";
+echo date('l, F j, Y');
 ?>
 </div>
 
