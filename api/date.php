@@ -8,20 +8,15 @@ $month = (integer) $_GET['month'];
 $year = (integer) $_GET['year'];
 
 //Check all data is present and bail with code xi (error-input) if not
-if (!$year)
+
+if(!$day || !$month)
 {
     echo "xi";
     die();
 }
-if (!$month)
+if(!$year)
 {
-    echo "xi";
-    die();
-}
-if (!$day)
-{
-    echo "xi";
-    die();
+  $year = date("Y ");
 }
 
 //Connect to the database
