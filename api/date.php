@@ -54,7 +54,7 @@ switch($month){
           checkDays($day, $feb);
           break;
      default:
-           echo "month day error";
+           die("month day error");
 }
 
 //Connect to the database
