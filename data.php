@@ -5,9 +5,16 @@ error_reporting(E_ALL);
  * Returns an array of data including w/a/b, weekend with next week, and override messages
  * Returns FALSE on error
  */
+ 
 function getData($year, $month, $day)
 {
-	$return = array();
+	
+	//Initial setup
+	$return = array(); //This holds all the data that will be returned
+	
+	$mysql_date = $year . "-" . $month . "-" . $day;
+	
+	
 	//Connect to the database
 	include "settings.php";
 
@@ -19,28 +26,18 @@ function getData($year, $month, $day)
 	
 	
 	//Query #1
-	$result = $db->query("SELECT * FROM `isitweeka` WHERE year = $year AND month = $month AND day = $day");
+	$result = $db->query("SELECT * FROM `isitweeka` WHERE date = \"$mysql_date\"");
 	$row = $result->fetch_assoc();
 	$return['abw'] = $row['isitweeka'];
 	
 	//Query #2
+	//If it's the weekend, check what the value is in 48 hours' time to see what's coming up
+	//At the weekend, Monday is never more than 48 hrs away, so add 2 days with MySQL's internal date_add() function
 	if ($return['abw'] == "w")
 	{
-		//Get the date in two days time
-		//Store it in $return['abw2'] as wa, wb etc.
-		//Going via Unix time - ugly but functional
-		$time = mktime(12, 0, 0, $month, $day, $year);
 
-		//Fast forward two days
-		//f_ means "future" - refers to 2 days ahead
-		$f_time = $time + 172800;
-		//Now get the ymd values for this timestamp
-	    $f_year = date("Y",$f_time);
-	    $f_month = date("n",$f_time);
-	    $f_day = date("j",$f_time);
-	    
 	    //Now run the query
-		$result = $db->query("SELECT * FROM isitweeka WHERE year = $f_year AND month = $f_month AND day = $f_day");
+		$result = $db->query("SELECT * FROM isitweeka WHERE date = DATE_ADD(\"$mysql_date\", INTERVAL 2 DAY)");
 		$row = $result->fetch_assoc();
 		$abw = $row['isitweeka'];
 		switch($abw)
@@ -63,7 +60,8 @@ function getData($year, $month, $day)
 	
 	
 	//Query #3: additional messages (may be bulletins or overrides)
-	$result = $db->query("SELECT * FROM isitweeka_messages WHERE year = $year AND month = $month AND day = $day");
+	
+	$result = $db->query("SELECT * FROM isitweeka_messages WHERE start_date <= \"$mysql_date\" AND end_date >= \"$mysql_date\"");
 	if(!$result)
 	{
 	    return false;
